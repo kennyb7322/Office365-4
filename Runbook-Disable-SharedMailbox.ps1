@@ -38,6 +38,7 @@ Connect-ExchangeOnline -Credential $psCredential
 # Get all shared mailbox
 $allmb = Get-Mailbox -RecipientTypeDetails SharedMailbox -ResultSize Unlimited
 
+# Get all active user objects shared mailbox
 $users = foreach ($mb in $allmb){Get-AzureADUser -ObjectId $mb.UserPrincipalName | Where-Object {$_.AccountEnabled -eq $true}}
 
 # Set shared mailbox user object in Azure AD to disabled to prevent direct logon
