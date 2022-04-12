@@ -40,6 +40,6 @@ $allmb = Get-Mailbox -RecipientTypeDetails SharedMailbox -ResultSize Unlimited
 
 # Set shared mailbox user object in Azure AD to disabled to prevent direct logon
 foreach ($mb in $allmb){
-Get-AzureADUser -ObjectId $mb.UserPrincipalName | Set-AzureADUser -AccountEnabled $false
-Write-Output "User object for shared mailbox $($mb.UserPrincipalName) disabled"
+  Get-AzureADUser -ObjectId $mb.UserPrincipalName | Where-Object {$_.AccountEnabled -eq $true} | Set-AzureADUser -AccountEnabled $false
+  Write-Output "User object for shared mailbox $($mb.UserPrincipalName) disabled"
 }
