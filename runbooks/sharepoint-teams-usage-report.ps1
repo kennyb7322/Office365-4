@@ -1,5 +1,5 @@
 <#PSScriptInfo
-.VERSION 0.1
+.VERSION 1.0
 .AUTHOR Ivo Uenk
 .RELEASENOTES
 
@@ -10,7 +10,7 @@
 .DESCRIPTION
   Generate a report about SharePoint-Teams usage
 .NOTES
-  Version:        0.1
+  Version:        1.0
   Author:         Ivo Uenk
   Creation Date:  2022-01-25
   Purpose/Change: Generate a report about SharePoint-Teams usage
@@ -153,7 +153,7 @@ $headers = @{
 $URLsend = "https://graph.microsoft.com/v1.0/users/$MsgFrom/sendMail"
 
 # Users can also be retrieved from groupmembership
-$Users = @("mail@ivouenk.nl","ivouenk@outlook.com")
+$Users = @("mailaddress1","mailaddress2")
 
 ForEach ($User in $Users) {
     #Write-Host "Sending welcome email to" $User.DisplayName
